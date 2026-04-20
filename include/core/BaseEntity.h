@@ -34,7 +34,7 @@ class BaseEntity : public ILoggable {
    void updateLastModified();
 
    //ILoagable implementation 
-   void logAvtivity(string msg) override;
+   void logActivity(string msg) override;
 
    //operators
    bool operator==(const BaseEntity& other )const;

@@ -12,13 +12,13 @@ class Officer : public Person {
     int yearOfService;
     static int officerCount;
     public:
-    Officer(const string& name,const string& sNumber,const strong& rank,double salry, const string& spec, const string& cmdCenter,int years);
+    Officer(const string& name,const string& sNumber,const string& rank,double salry, const string& spec, const string& cmdCenter,int years);
     ~Officer();
 
     //override
     void display() const override ;
     void saveToFile(const string& filename) const override;
-    void loadFromFile(const string& filename) const override ;
+    void loadFromFile(const string& filename)  override ;
     string getEntityType() const override { return "Officer";}
     string getPersonType() const override { return "Officer";}
     

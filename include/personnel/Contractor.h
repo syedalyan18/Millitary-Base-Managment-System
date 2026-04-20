@@ -9,7 +9,7 @@ using namespace std;
 //contractor class 
 class Contractor : public Person {
     private:
-    string companyNmae;
+    string companyName;
     string securityClearanceLevel;
     string contractEndDate;
     bool isClearancevalid;
