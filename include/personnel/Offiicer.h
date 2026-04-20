@@ -13,7 +13,7 @@ class Officer : public Person {
     static int officerCount;
     public:
     Officer(const string& name,const string& sNumber,const strong& rank,double salry, const string& spec, const string& cmdCenter,int years);
-    ~Officer{};
+    ~Officer();
 
     //override
     void display() const override ;
