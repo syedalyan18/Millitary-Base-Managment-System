@@ -66,6 +66,21 @@ void Person::addAssignedWeapon(const string& weaponID) {
     }
 }
 
+// Remove assigned weapon
+void Person::removeAssignedWeapon(const string& weaponID) {
+    auto it = find(assignedWeapons.begin(), assignedWeapons.end(), weaponID);
+    if (it != assignedWeapons.end()) {
+        assignedWeapons.erase(it);
+        logActivity("Weapon " + weaponID + " unassigned");
+    }
+}
+
+// Check if person has weapon
+bool Person::hasWeapon(const string& weaponID) const {
+    auto it = find(assignedWeapons.begin(), assignedWeapons.end(), weaponID);
+    return it != assignedWeapons.end();
+}
+
 // Validate service number
 bool Person::isValidServiceNumber(const string& sNumber) {
     return Utils::isValidServiceNumber(sNumber);

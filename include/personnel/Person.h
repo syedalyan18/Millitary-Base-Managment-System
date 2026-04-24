@@ -34,6 +34,8 @@ class Person : public BaseEntity {
     void setSalary(double newSalary);
     void setCurrentPosition(const string& newPosition);
     void addAssignedWeapon(const string& weaponID);
+    void removeAssignedWeapon(const string& weaponID);
+    bool hasWeapon(const string& weaponID) const;
 
     //service number validaiton
     static bool isValidServiceNumber(const string& sNumber);

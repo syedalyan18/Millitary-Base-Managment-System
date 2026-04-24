@@ -11,6 +11,7 @@ class Contractor;
 class Weapon;
 class Supplies;
 class Operation;
+class Person;
 
 class MenuSystem{
     public:
@@ -35,6 +36,9 @@ class MenuSystem{
     void deletePersonnel();
     void displayAllPersonnel();
     void promoteOfficer();
+    void assignWeaponToPersonnel();
+    void unassignWeaponFromPersonnel();
+    void viewPersonnelWeapons();
 
     //logistics management
     void addWeapon();
@@ -77,5 +81,9 @@ class MenuSystem{
     void handleLogisticsMenu(int choice);
     void handleOperationsMenu(int choice);
     void handleReportsMenu(int choice);
+
+    //helper methods
+    Person* findPersonnelByID(int id);
+    Weapon* findWeaponByID(int id);
 };
 #endif

@@ -135,6 +135,9 @@ void MenuSystem::displayPersonnelMenu() {
     cout << "3. Delete Personnel" << endl;
     cout << "4. Display All Personnel" << endl;
     cout << "5. Promote Officer" << endl;
+    cout << "6. Assign Weapon to Personnel" << endl;
+    cout << "7. Unassign Weapon from Personnel" << endl;
+    cout << "8. View Personnel Weapons" << endl;
     cout << "0. Back to Main Menu" << endl;
     cout << "\nEnter your choice: ";
 }
@@ -162,6 +165,17 @@ void MenuSystem::handlePersonnelMenu(int choice) {
             break;
         case 5:
             promoteOfficer();
+            break;
+        case 6:
+            assignWeaponToPersonnel();
+            break;
+        case 7:
+            unassignWeaponFromPersonnel();
+            break;
+        case 8:
+            viewPersonnelWeapons();
+            break;
+        case 0:
             break;
         default:
             cout << "Invalid choice." << endl;
@@ -857,4 +871,220 @@ void MenuSystem::loadAllData() {
         auditLog->loadFromFile();
     }
     cout << "Data loaded successfully." << endl;
+}
+
+// Helper methods to find personnel and weapons by ID
+Person* MenuSystem::findPersonnelByID(int id) {
+    for (auto& officer : officers) {
+        if (officer->getID() == id) {
+            return officer;
+        }
+    }
+    for (auto& contractor : contractors) {
+        if (contractor->getID() == id) {
+            return contractor;
+        }
+    }
+    return nullptr;
+}
+
+Weapon* MenuSystem::findWeaponByID(int id) {
+    for (auto& weapon : weapons) {
+        if (weapon->getID() == id) {
+            return weapon;
+        }
+    }
+    return nullptr;
+}
+
+// Weapon Assignment Functions
+void MenuSystem::assignWeaponToPersonnel() {
+    cout << "\n=== ASSIGN WEAPON TO PERSONNEL ===" << endl;
+    
+    if (officers.empty() && contractors.empty()) {
+        cout << "No personnel available." << endl;
+        return;
+    }
+    
+    if (weapons.empty()) {
+        cout << "No weapons available." << endl;
+        return;
+    }
+    
+    // Display all personnel
+    cout << "\n--- Available Personnel ---" << endl;
+    for (const auto& officer : officers) {
+        cout << "ID: " << officer->getID() << " | Name: " << officer->getName() 
+             << " | Rank: " << officer->getRank() << endl;
+    }
+    for (const auto& contractor : contractors) {
+        cout << "ID: " << contractor->getID() << " | Name: " << contractor->getName() << endl;
+    }
+    
+    cout << "\nEnter personnel ID: ";
+    int personID;
+    cin >> personID;
+    cin.ignore();
+    
+    Person* person = findPersonnelByID(personID);
+    if (!person) {
+        cout << "\nPersonnel not found." << endl;
+        return;
+    }
+    
+    // Display all weapons
+    cout << "\n--- Available Weapons ---" << endl;
+    for (const auto& weapon : weapons) {
+        cout << "ID: " << weapon->getID() << " | Name: " << weapon->getName() 
+             << " | Type: " << weapon->getWeaponType() << " | Qty: " << weapon->getQuantity() << endl;
+    }
+    
+    cout << "\nEnter weapon ID to assign: ";
+    int weaponID;
+    cin >> weaponID;
+    cin.ignore();
+    
+    Weapon* weapon = findWeaponByID(weaponID);
+    if (!weapon) {
+        cout << "\nWeapon not found." << endl;
+        return;
+    }
+    
+    // Assign weapon
+    if (person->hasWeapon(to_string(weaponID))) {
+        cout << "\nThis weapon is already assigned to " << person->getName() << endl;
+        return;
+    }
+    
+    person->addAssignedWeapon(to_string(weaponID));
+    auditLog->addEntry("ASSIGN", "Weapon", weaponID, 
+                       "Weapon " + weapon->getName() + " assigned to " + person->getName());
+    
+    cout << "\nWeapon assigned successfully!" << endl;
+    cout << "Weapon: " << weapon->getName() << " assigned to: " << person->getName() << endl;
+}
+
+void MenuSystem::unassignWeaponFromPersonnel() {
+    cout << "\n=== UNASSIGN WEAPON FROM PERSONNEL ===" << endl;
+    
+    if (officers.empty() && contractors.empty()) {
+        cout << "No personnel available." << endl;
+        return;
+    }
+    
+    // Display all personnel
+    cout << "\n--- Available Personnel ---" << endl;
+    for (const auto& officer : officers) {
+        cout << "ID: " << officer->getID() << " | Name: " << officer->getName() 
+             << " | Rank: " << officer->getRank() << endl;
+    }
+    for (const auto& contractor : contractors) {
+        cout << "ID: " << contractor->getID() << " | Name: " << contractor->getName() << endl;
+    }
+    
+    cout << "\nEnter personnel ID: ";
+    int personID;
+    cin >> personID;
+    cin.ignore();
+    
+    Person* person = findPersonnelByID(personID);
+    if (!person) {
+        cout << "\nPersonnel not found." << endl;
+        return;
+    }
+    
+    auto assignedWeapons = person->getAssigneedWeapons();
+    if (assignedWeapons.empty()) {
+        cout << "\n" << person->getName() << " has no weapons assigned." << endl;
+        return;
+    }
+    
+    // Display assigned weapons
+    cout << "\n--- Weapons Assigned to " << person->getName() << " ---" << endl;
+    for (const auto& weaponIDStr : assignedWeapons) {
+        int wID = stoi(weaponIDStr);
+        Weapon* w = findWeaponByID(wID);
+        if (w) {
+            cout << "ID: " << w->getID() << " | Name: " << w->getName() 
+                 << " | Type: " << w->getWeaponType() << endl;
+        }
+    }
+    
+    cout << "\nEnter weapon ID to unassign: ";
+    int weaponID;
+    cin >> weaponID;
+    cin.ignore();
+    
+    Weapon* weapon = findWeaponByID(weaponID);
+    if (!weapon) {
+        cout << "\nWeapon not found." << endl;
+        return;
+    }
+    
+    if (!person->hasWeapon(to_string(weaponID))) {
+        cout << "\nThis weapon is not assigned to " << person->getName() << endl;
+        return;
+    }
+    
+    person->removeAssignedWeapon(to_string(weaponID));
+    auditLog->addEntry("UNASSIGN", "Weapon", weaponID, 
+                       "Weapon " + weapon->getName() + " unassigned from " + person->getName());
+    
+    cout << "\nWeapon unassigned successfully!" << endl;
+    cout << "Weapon: " << weapon->getName() << " unassigned from: " << person->getName() << endl;
+}
+
+void MenuSystem::viewPersonnelWeapons() {
+    cout << "\n=== VIEW PERSONNEL WEAPONS ===" << endl;
+    
+    if (officers.empty() && contractors.empty()) {
+        cout << "No personnel available." << endl;
+        return;
+    }
+    
+    // Display all personnel
+    cout << "\n--- Available Personnel ---" << endl;
+    for (const auto& officer : officers) {
+        cout << "ID: " << officer->getID() << " | Name: " << officer->getName() 
+             << " | Rank: " << officer->getRank() << endl;
+    }
+    for (const auto& contractor : contractors) {
+        cout << "ID: " << contractor->getID() << " | Name: " << contractor->getName() << endl;
+    }
+    
+    cout << "\nEnter personnel ID: ";
+    int personID;
+    cin >> personID;
+    cin.ignore();
+    
+    Person* person = findPersonnelByID(personID);
+    if (!person) {
+        cout << "\nPersonnel not found." << endl;
+        return;
+    }
+    
+    auto assignedWeapons = person->getAssigneedWeapons();
+    
+    cout << "\n" << Utils::createString(60, '=') << endl;
+    cout << "WEAPONS ASSIGNED TO: " << person->getName() << endl;
+    cout << Utils::createString(60, '=') << endl;
+    
+    if (assignedWeapons.empty()) {
+        cout << "\nNo weapons assigned to " << person->getName() << endl;
+    } else {
+        for (const auto& weaponIDStr : assignedWeapons) {
+            int wID = stoi(weaponIDStr);
+            Weapon* w = findWeaponByID(wID);
+            if (w) {
+                cout << "\nWeapon ID: " << w->getID() << endl;
+                cout << "Name: " << w->getName() << endl;
+                cout << "Type: " << w->getWeaponType() << endl;
+                cout << "Caliber: " << w->getCaliber() << endl;
+                cout << "Ammunition: " << w->getCurrentAmmunition() << endl;
+                cout << "Magazine Capacity: " << w->getMaxAmmunitionCapacity() << endl;
+                cout << "Status: " << (w->isWeaponLocked() ? "LOCKED" : "UNLOCKED") << endl;
+                cout << Utils::createString(60, '-') << endl;
+            }
+        }
+    }
 }
