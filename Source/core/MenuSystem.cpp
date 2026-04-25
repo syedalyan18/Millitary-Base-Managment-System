@@ -471,6 +471,15 @@ void MenuSystem::deletePersonnel() {
     cout << "Enter personnel ID to delete: ";
     int id;
     cin >> id;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     for (auto it = officers.begin(); it != officers.end(); ++it) {
@@ -501,6 +510,15 @@ void MenuSystem::promoteOfficer() {
     cout << "Enter officer ID: ";
     int id;
     cin >> id;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     cout << "Enter new rank: ";
@@ -654,12 +672,20 @@ void MenuSystem::displayAllEquipment() {
 
 void MenuSystem::deleteEquipment() {
     cout << "\n=== DELETE EQUIPMENT ===" << endl;
-    cout << "Enter equipment ID: ";
+    cout << "Enter equipment ID to delete: ";
     int id;
     cin >> id;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
-    // Search and delete from weapons
     for (auto it = weapons.begin(); it != weapons.end(); ++it) {
         if ((*it)->getID() == id) {
             cout << "Deleting Weapon: " << (*it)->getName() << endl;
@@ -671,7 +697,6 @@ void MenuSystem::deleteEquipment() {
         }
     }
     
-    // Search and delete from supplies
     for (auto it = supplies.begin(); it != supplies.end(); ++it) {
         if ((*it)->getID() == id) {
             cout << "Deleting Supplies: " << (*it)->getName() << endl;
@@ -738,6 +763,15 @@ void MenuSystem::deleteOperation() {
     cout << "Enter operation ID: ";
     int id;
     cin >> id;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     for (auto it = operations.begin(); it != operations.end(); ++it) {
@@ -913,6 +947,15 @@ void MenuSystem::searchAuditByEntityID() {
     int entityID;
     cout << "\nEnter entity ID to search: ";
     cin >> entityID;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     if (auditLog != nullptr) {
@@ -992,6 +1035,15 @@ void MenuSystem::assignWeaponToPersonnel() {
     cout << "\nEnter personnel ID: ";
     int personID;
     cin >> personID;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     Person* person = findPersonnelByID(personID);
@@ -1010,6 +1062,15 @@ void MenuSystem::assignWeaponToPersonnel() {
     cout << "\nEnter weapon ID to assign: ";
     int weaponID;
     cin >> weaponID;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     Weapon* weapon = findWeaponByID(weaponID);
@@ -1053,6 +1114,15 @@ void MenuSystem::unassignWeaponFromPersonnel() {
     cout << "\nEnter personnel ID: ";
     int personID;
     cin >> personID;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     Person* person = findPersonnelByID(personID);
@@ -1081,6 +1151,15 @@ void MenuSystem::unassignWeaponFromPersonnel() {
     cout << "\nEnter weapon ID to unassign: ";
     int weaponID;
     cin >> weaponID;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     Weapon* weapon = findWeaponByID(weaponID);
@@ -1123,6 +1202,15 @@ void MenuSystem::viewPersonnelWeapons() {
     cout << "\nEnter personnel ID: ";
     int personID;
     cin >> personID;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     Person* person = findPersonnelByID(personID);
@@ -1164,6 +1252,15 @@ void MenuSystem::searchPersonnelByID() {
     cout << "Enter personnel ID: ";
     int id;
     cin >> id;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     Person* person = findPersonnelByID(id);
@@ -1214,6 +1311,15 @@ void MenuSystem::updatePersonnelDetails() {
     cout << "Enter personnel ID: ";
     int id;
     cin >> id;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     Person* person = findPersonnelByID(id);
@@ -1230,6 +1336,15 @@ void MenuSystem::updatePersonnelDetails() {
     cout << "Enter choice: ";
     int choice;
     cin >> choice;
+    
+    // Handle invalid input for choice
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid choice." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     try {
@@ -1238,6 +1353,15 @@ void MenuSystem::updatePersonnelDetails() {
             cout << "Enter new salary: ";
             double newSalary;
             cin >> newSalary;
+            
+            // Handle invalid input for salary
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore(10000, '\n');
+                cout << "\nInvalid input. Please enter a valid salary amount." << endl;
+                return;
+            }
+            
             cin.ignore();
             person->setSalary(newSalary);
             auditLog->addEntry("UPDATE", "Personnel", id, "Salary updated to " + to_string(newSalary));
@@ -1325,6 +1449,15 @@ void MenuSystem::updateWeaponAmmunition() {
     cout << "\nEnter weapon ID: ";
     int weaponID;
     cin >> weaponID;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     Weapon* weapon = findWeaponByID(weaponID);
@@ -1339,11 +1472,29 @@ void MenuSystem::updateWeaponAmmunition() {
     cout << "Enter choice: ";
     int choice;
     cin >> choice;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid choice." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     cout << "Enter amount: ";
     int amount;
     cin >> amount;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer amount." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     try {
@@ -1379,6 +1530,15 @@ void MenuSystem::performWeaponMaintenance() {
     cout << "\nEnter weapon ID: ";
     int weaponID;
     cin >> weaponID;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     Weapon* weapon = findWeaponByID(weaponID);
@@ -1413,6 +1573,15 @@ void MenuSystem::issueAmmunition() {
     cout << "\nEnter weapon ID: ";
     int weaponID;
     cin >> weaponID;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     Weapon* weapon = findWeaponByID(weaponID);
@@ -1424,6 +1593,15 @@ void MenuSystem::issueAmmunition() {
     cout << "\nEnter quantity to issue: ";
     int quantity;
     cin >> quantity;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer quantity." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     if (quantity > weapon->getCurrentAmmunition()) {
@@ -1491,6 +1669,15 @@ void MenuSystem::replenishSupplies() {
     cout << "\nEnter supplies ID: ";
     int supplyID;
     cin >> supplyID;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     Supplies* supply = nullptr;
@@ -1509,6 +1696,15 @@ void MenuSystem::replenishSupplies() {
     cout << "Enter quantity to add: ";
     int quantity;
     cin >> quantity;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer quantity." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     try {
@@ -1537,6 +1733,15 @@ void MenuSystem::consumeSupplies() {
     cout << "\nEnter supplies ID: ";
     int supplyID;
     cin >> supplyID;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     Supplies* supply = nullptr;
@@ -1555,6 +1760,15 @@ void MenuSystem::consumeSupplies() {
     cout << "Enter quantity to consume: ";
     int quantity;
     cin >> quantity;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer quantity." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     if (quantity > supply->getQuantity()) {
@@ -1576,6 +1790,15 @@ void MenuSystem::searchEquipmentByID() {
     cout << "Enter equipment ID: ";
     int id;
     cin >> id;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     for (auto& weapon : weapons) {
@@ -1622,6 +1845,15 @@ void MenuSystem::assignPersonnelToOperation() {
     cout << "\nEnter operation ID: ";
     int opID;
     cin >> opID;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     Operation* operation = nullptr;
@@ -1648,6 +1880,15 @@ void MenuSystem::assignPersonnelToOperation() {
     cout << "\nEnter personnel ID: ";
     int personID;
     cin >> personID;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     Person* person = findPersonnelByID(personID);
@@ -1682,6 +1923,15 @@ void MenuSystem::assignEquipmentToOperation() {
     cout << "\nEnter operation ID: ";
     int opID;
     cin >> opID;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     Operation* operation = nullptr;
@@ -1708,6 +1958,15 @@ void MenuSystem::assignEquipmentToOperation() {
     cout << "\nEnter equipment ID: ";
     int equipID;
     cin >> equipID;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     operation->requireEquipment(equipID);
@@ -1732,6 +1991,15 @@ void MenuSystem::updateOperationStatus() {
     cout << "\nEnter operation ID: ";
     int opID;
     cin >> opID;
+    
+    // Handle invalid input
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+        return;
+    }
+    
     cin.ignore();
     
     Operation* operation = nullptr;
@@ -1775,6 +2043,15 @@ void MenuSystem::searchOperation() {
         cout << "Enter operation ID: ";
         int id;
         cin >> id;
+        
+        // Handle invalid input
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "\nInvalid input. Please enter a valid integer ID." << endl;
+            return;
+        }
+        
         cin.ignore();
         for (auto& op : operations) {
             if (op->getID() == id) {
