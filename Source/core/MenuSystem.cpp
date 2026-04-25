@@ -89,7 +89,7 @@ double MenuSystem::readValidatedDouble(const string& prompt) {
         size_t idx = 0;
         double value = stod(input, &idx);
         if (idx != input.length()) {
-            throw ValidationException("Please enter a valid numeric value.");
+            throw ValidationException("Please enter a valid double value.");
         }
         return value;
     }
@@ -97,7 +97,7 @@ double MenuSystem::readValidatedDouble(const string& prompt) {
         throw;
     }
     catch (const exception&) {
-        throw ValidationException("Please enter a valid numeric value.");
+        throw ValidationException("Please enter a valid double value.");
     }
 }
 
@@ -1015,7 +1015,7 @@ void MenuSystem::unassignWeaponFromPersonnel() {
         return;
     }
     
-    auto assignedWeapons = person->getAssigneedWeapons();
+    auto assignedWeapons = person->getAssignedWeapons();
     if (assignedWeapons.empty()) {
         cout << "\n" << person->getName() << " has no weapons assigned." << endl;
         return;
@@ -1079,7 +1079,7 @@ void MenuSystem::viewPersonnelWeapons() {
         return;
     }
     
-    auto assignedWeapons = person->getAssigneedWeapons();
+    auto assignedWeapons = person->getAssignedWeapons();
     
     cout << "\n" << Utils::createString(60, '=') << endl;
     cout << "WEAPONS ASSIGNED TO: " << person->getName() << endl;

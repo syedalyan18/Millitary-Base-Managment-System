@@ -18,7 +18,8 @@ void initializeSystem() {
         cout << "Operations management module ready" << endl;
         cout << "Audit logging system initialized" << endl;
         cout << "\nSystem initialized successfully!" << endl;
-        cout << "\nVersion: 1.0" << endl;
+        cout << "\nVersion: 1.1" << endl;
+        cout << "\nBuilt by : M.Anas, Abdullah Moin, Alyan Hussain" << endl;
         cout << "Build Date: " << Utils::getCurrentDateTime() << endl;
         
         Utils::pauseExecution("\nPress Enter to continue to main menu...");
@@ -53,7 +54,7 @@ int main() {
         // Initialize system
         initializeSystem();
         
-        // Create and run menu system
+        // Create menu obj and run menu system
         MenuSystem menu;
         menu.run();
         
