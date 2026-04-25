@@ -1,7 +1,7 @@
 #ifndef AUDIT_LOG_H
 #define AUDIT_LOG_H
 
-#include <iosfwd>
+#include <iostream>
 #include <string>
 #include <vector>
 

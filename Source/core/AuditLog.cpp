@@ -149,7 +149,6 @@ void AuditLog::loadFromFile() {
     string line;
     while (getline(inFile, line)) {
         // Parse and recreate entries from file
-        // This is simplified - in production, use proper parsing
     }
     
     inFile.close();

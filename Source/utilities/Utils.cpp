@@ -3,12 +3,28 @@
 #include <cctype>
 #include <algorithm>
 #include <ctime>
+#include <iomanip>
 #include <sstream>
 #include <fstream>
 #include <cstdlib>
 #include <cmath>
 
 using namespace std;
+
+namespace {
+string formatCurrentTime(const char* format) {
+    time_t now = time(nullptr);
+    tm localTime{};
+    tm* timePtr = localtime(&now);
+    if (timePtr != nullptr) {
+        localTime = *timePtr;
+    }
+
+    ostringstream out;
+    out << put_time(&localTime, format);
+    return out.str();
+}
+}
 
 // String utilities
 string Utils::toLowerCase(const string& str) {
@@ -20,7 +36,7 @@ string Utils::toLowerCase(const string& str) {
 // Input validation
 
 bool Utils::isValidDate(const string& date) {
-    // Format: YYYY-MM-DD
+    // Format YYYY-MM-DD
     if (date.length() != 10) return false;
     if (date[4] != '-' || date[7] != '-') return false;
     
@@ -31,21 +47,13 @@ bool Utils::isValidDate(const string& date) {
     return true;
 }
 
-// Date/Time utilities
+// DateTime utilities
 string Utils::getCurrentDateTime() {
-    time_t now = time(0);
-    struct tm* timeinfo = localtime(&now);
-    char buffer[80];
-    strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", timeinfo);
-    return std::string(buffer);
+    return formatCurrentTime("%Y-%m-%d %H:%M:%S");
 }
 
 string Utils::getCurrentDate() {
-    time_t now = time(0);
-    struct tm* timeinfo = localtime(&now);
-    char buffer[80];
-    strftime(buffer, sizeof(buffer), "%Y-%m-%d", timeinfo);
-    return std::string(buffer);
+    return formatCurrentTime("%Y-%m-%d");
 }
 
 // Display utilities

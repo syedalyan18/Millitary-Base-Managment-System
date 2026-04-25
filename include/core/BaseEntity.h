@@ -14,7 +14,7 @@ class BaseEntity : public ILoggable {
     string lastModified;
     static int entityCounter;
 
-    BaseEntity(const string&n = ""); // for derived cllass only
+    BaseEntity(const string&n = ""); // for derived class only
    public:
    virtual ~BaseEntity();
 
@@ -39,7 +39,7 @@ class BaseEntity : public ILoggable {
 
    //operators
    bool operator==(const BaseEntity& other )const;
-   bool operator!=(const BaseEntity& othere) const;
+   bool operator!=(const BaseEntity& other) const;
    friend ostream& operator<< (ostream& out,const BaseEntity&entity);
    friend istream& operator>>(istream& in,BaseEntity&entity);
 

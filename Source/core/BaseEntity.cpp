@@ -33,12 +33,12 @@ void BaseEntity::logActivity(string msg) {
     cout << "[LOG] Entity " << entityID << " (" << name << "): " << msg << endl;
 }
 
-// Operator== for comparison
+// Operator== for id comparison
 bool BaseEntity::operator==(const BaseEntity& other) const {
     return this->entityID == other.entityID;
 }
 
-// Operator!= for comparison
+// Operator!= for id comparison
 bool BaseEntity::operator!=(const BaseEntity& other) const {
     return !(*this == other);
 }
