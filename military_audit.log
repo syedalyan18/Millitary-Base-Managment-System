@@ -1,0 +1,12 @@
+1|2026-04-26 14:41:00|ADD|Officer|1|Officer Capt. Hamza Ali added
+2|2026-04-26 14:42:15|ADD|Contractor|2|Contractor Engr. Saad Raza added
+3|2026-04-26 14:42:49|UPDATE|Personnel|1|Salary updated to 160000.000000
+4|2026-04-26 14:43:09|UPDATE|Personnel|1|Rank updated to Major
+5|2026-04-26 14:44:14|ADD|Weapon|3|Weapon G3 rifle added
+6|2026-04-26 14:45:09|ADD|Supplies|4|Supplies Combact ration pack added
+7|2026-04-26 14:45:30|UPDATE|Weapon|3|Ammunition added: 120 rounds
+8|2026-04-26 14:46:59|ADD|Operation|5|Operation OP-ZARB-01 created
+9|2026-04-26 14:47:18|ASSIGN|Operation|5|Personnel Capt. Hamza Ali assigned
+10|2026-04-26 14:47:32|ASSIGN|Operation|5|Equipment ID 3 assigned
+11|2026-04-26 14:47:45|UPDATE|Operation|5|Status updated to Active
+12|2026-04-26 14:48:18|DELETE|Operation|5|Operation deleted
