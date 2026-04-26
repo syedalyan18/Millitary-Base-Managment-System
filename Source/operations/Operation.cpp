@@ -62,16 +62,6 @@ void Operation::display() const {
     cout << "=============================\n" << endl;
 }
 
-// Save to file
-void Operation::saveToFile(const string& filename) const {
-    cout << "Saving operation to " << filename << endl;
-}
-
-// Load from file
-void Operation::loadFromFile(const string& filename) {
-    cout << "Loading operation from " << filename << endl;
-}
-
 // Set status
 void Operation::setStatus(const string& newStatus) {
     if (!Utils::isValidOperationStatus(newStatus)) {

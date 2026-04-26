@@ -29,8 +29,6 @@ public:
     
     // Override virtual functions
     void display() const override;
-    void saveToFile(const string& filename) const override;
-    void loadFromFile(const string& filename) override;
     string getEntityType() const override { return "Operation"; }
     
     // Getters

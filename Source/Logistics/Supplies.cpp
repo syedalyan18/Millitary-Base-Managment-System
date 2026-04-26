@@ -63,16 +63,6 @@ void Supplies::display() const {
     cout << "==============================\n" << endl;
 }
 
-// Save to file
-void Supplies::saveToFile(const string& filename) const {
-    cout << "Saving supplies to " << filename << endl;
-}
-
-// Load from file
-void Supplies::loadFromFile(const string& filename) {
-    cout << "Loading supplies from " << filename << endl;
-}
-
 // Set supply type
 void Supplies::setSupplyType(const string& type) {
     supplyType = type;

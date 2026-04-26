@@ -51,16 +51,6 @@ void Contractor::display() const {
     cout << "========================================\n" << endl;
 }
 
-// Save to file
-void Contractor::saveToFile(const string& filename) const {
-    cout << "Saving contractor to " << filename << endl;
-}
-
-// Load from file
-void Contractor::loadFromFile(const string& filename) {
-    cout << "Loading contractor from " << filename << endl;
-}
-
 // Set company name
 void Contractor::setCompanyName(const string& company) {
     companyName = company;

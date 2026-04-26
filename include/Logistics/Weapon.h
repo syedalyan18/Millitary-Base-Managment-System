@@ -16,9 +16,6 @@ class Weapon : public Equipment {
         Weapon(const std::string& name, const std::string& code, const std::string& type,
                int qty, double cost, const std::string& loc, int ammo, int magCap, const std::string& cal);
 
-        void saveToFile(const std::string& fileName) const;
-        void loadFromFile(const std::string& fileName);
-
         void setWeaponType(const std::string& type);
         void setCaliber(const std::string& cal);
         void addAmmunition(int amount);

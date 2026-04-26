@@ -14,9 +14,6 @@ class Supplies : public Equipment {
         Supplies(const std::string& name, const std::string& code, const std::string& type,
                  int qty, double cost, const std::string& loc, const std::string& expDate,
                  int minStock, const std::string& supp);
-
-        void saveToFile(const std::string& fileName) const;
-        void loadFromFile(const std::string& fileName);
         bool validateCondition(const std::string& cond) const override;
 
         std::string getEquipmentType() const override;
