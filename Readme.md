@@ -154,6 +154,59 @@ The system emphasizes data integrity through a robust **Audit Log** that records
 
 ---
 
+## Test Cases with Snippets
+
+The following test cases are based on the uploaded execution runs and validate the major flows described in the use cases.
+
+### TC-01: Add Officer (Personnel Registration)
+- **Use Case Mapping:** 1. Personnel Registration and Management
+- **Menu Path:** Main Menu -> Personnel Management -> 1. Add Officer
+- **Snippet:**
+- ![alt text](image.png)
+
+### TC-02: Add Contractor (Personnel Registration)
+- **Use Case Mapping:** 1. Personnel Registration and Management
+- **Menu Path:** Main Menu -> Personnel Management -> 2. Add Contractor
+- **Snippet:**
+![alt text](image-1.png)
+### TC-03: Delete Personnel (Officer)
+- **Use Case Mapping:** 1. Personnel Registration and Management
+- **Menu Path:** Main Menu -> Personnel Management -> 3. Delete Personnel
+- **Snippet:**
+![alt text](image-3.png)
+
+### TC-04: Add Weapon (Inventory Lifecycle)
+- **Use Case Mapping:** 2. Weapon and Supplies Lifecycle Management
+- **Menu Path:** Main Menu -> Logistics Management -> 1. Add Weapon
+- **Snippet:**
+![alt text](image-4.png)
+### TC-05: Add Supplies (Inventory Lifecycle)
+- **Use Case Mapping:** 2. Weapon and Supplies Lifecycle Management
+- **Menu Path:** Main Menu -> Logistics Management -> 2. Add Supplies
+- **Snippet:**
+![alt text](image-5.png)
+### TC-06: Check Inventory and Totals
+- **Use Case Mapping:** 2. Weapon and Supplies Lifecycle Management
+- **Menu Path:** Main Menu -> Logistics Management -> 5. Check Inventory
+- **Snippet:**
+![alt text](image-6.png)
+### TC-07: Search Equipment by ID (Supplies)
+- **Use Case Mapping:** 2. Weapon and Supplies Lifecycle Management
+- **Menu Path:** Main Menu -> Logistics Management -> 12. Search Equipment by ID
+- **Snippet:**
+![alt text](image-7.png)
+### TC-08: Create and Delete Operation
+- **Use Case Mapping:** 3. Operation Planning and Execution Tracking
+- **Menu Path:** Main Menu -> Operations Management -> 1. Create Operation, then 2. Delete Operation
+- **Snippet:**
+![alt text](image-8.png)
+![alt text](image-9.png)
+### TC-09: Audit Log Verification
+- **Use Case Mapping:** 5. Security Auditing and Traceability
+- **Menu Path:** Main Menu -> Audit Log Management -> 1. View All Audit Entries
+- **Snippet:**
+![alt text](image-10.png)-
+
 ##  Core OOP Concepts Applied
 * **Encapsulation:** All data members (e.g., `salary`, `quantity`) are protected/private, accessible only through controlled getter and setter methods.
 * **Inheritance:** Utilizes a multi-level hierarchy where `Officer` and `Contractor` inherit from `Person`, and `Weapon` and `Supplies` inherit from `Equipment`—all deriving from a central `BaseEntity`.

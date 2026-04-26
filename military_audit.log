@@ -10,3 +10,7 @@
 10|2026-04-26 14:47:32|ASSIGN|Operation|5|Equipment ID 3 assigned
 11|2026-04-26 14:47:45|UPDATE|Operation|5|Status updated to Active
 12|2026-04-26 14:48:18|DELETE|Operation|5|Operation deleted
+1|2026-04-26 16:26:24|ADD|Weapon|1|Weapon GP-Rifle added
+2|2026-04-26 16:27:49|ADD|Supplies|2|Supplies Combact Ration Pack added
+3|2026-04-26 16:30:02|ADD|Operation|3|Operation OP-ZARB created
+4|2026-04-26 16:30:22|DELETE|Operation|3|Operation deleted
