@@ -916,18 +916,32 @@ void MenuSystem::searchAuditByEntityID() {
 // Data sync
 void MenuSystem::saveAllData() {
     cout << "\nSaving all data..." << endl;
-    if (auditLog != nullptr) {
-        auditLog->saveToFile();
+    try {
+        if (auditLog != nullptr) {
+            auditLog->saveToFile();
+        }
+        cout << "Data saved successfully." << endl;
+    } catch (const FileException& e) {
+        cout << "\nFile error while saving data: " << e.what() << endl;
+    } catch (const exception& e) {
+        cout << "\nUnexpected error while saving data: " << e.what() << endl;
     }
-    cout << "Data saved successfully." << endl;
 }
 
 void MenuSystem::loadAllData() {
     cout << "\nLoading all data..." << endl;
-    if (auditLog != nullptr) {
-        auditLog->loadFromFile();
+    try {
+        if (auditLog != nullptr) {
+            auditLog->loadFromFile();
+        }
+        cout << "Data loaded successfully." << endl;
+    } catch (const FileNotFoundException& e) {
+        cout << "\nNo saved audit log found: " << e.what() << endl;
+    } catch (const FileException& e) {
+        cout << "\nFile error while loading data: " << e.what() << endl;
+    } catch (const exception& e) {
+        cout << "\nUnexpected error while loading data: " << e.what() << endl;
     }
-    cout << "Data loaded successfully." << endl;
 }
 
 // Finder helpers
