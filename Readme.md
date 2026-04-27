@@ -5,7 +5,7 @@
 * **Muhammad Anas** (ID: 25K-0899)
 * **Abdullah Moin** (ID: 25K-0991)
 * **Syed Alyan Hussain** (ID: 25K-0648)
-
+## Class Diagram: https://tinyurl.com/bde8haxx
 ##  Project Folder Structure 
 ```text
 Project/
