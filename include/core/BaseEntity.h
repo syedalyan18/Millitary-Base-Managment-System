@@ -19,8 +19,6 @@ class BaseEntity : public ILoggable {
    virtual ~BaseEntity();
 
    virtual void display() const = 0;
-   virtual void saveToFile(const string& filename) const = 0;
-    virtual void loadFromFile(const string& filename) = 0;
    virtual string getEntityType() const = 0;
 
    //getters

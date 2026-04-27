@@ -62,16 +62,6 @@ void Weapon::display() const {
     cout << "===========================\n" << endl;
 }
 
-// Save to file
-void Weapon::saveToFile(const string& filename) const {
-    cout << "Saving weapon to " << filename << endl;
-}
-
-// Load from file
-void Weapon::loadFromFile(const string& filename) {
-    cout << "Loading weapon from " << filename << endl;
-}
-
 // Set weapon type
 void Weapon::setWeaponType(const string& type) {
     weaponType = type;

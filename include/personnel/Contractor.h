@@ -22,8 +22,6 @@ class Contractor : public Person {
 
     //overide virtual func
     void display() const override;
-    void saveToFile(const string& filename) const override;
-    void loadFromFile(const string& filename) override ;
     string getEntityType() const override { return "Contractor";}
     string getPersonType() const override { return "Contractor";}
 

@@ -223,8 +223,9 @@ void MenuSystem::handleMainMenu(int choice) {
             }
             break;
         case 6:
-            saveAllData();
-            isRunning = false;
+            if (saveAllData()) {
+                isRunning = false;
+            }
             break;
         default:
             cout << "Invalid choice. Please try again." << endl;
@@ -914,20 +915,47 @@ void MenuSystem::searchAuditByEntityID() {
 }
 
 // Data sync
-void MenuSystem::saveAllData() {
+bool MenuSystem::saveAllData() {
     cout << "\nSaving all data..." << endl;
-    if (auditLog != nullptr) {
-        auditLog->saveToFile();
+    while (true) {
+        try {
+            if (auditLog == nullptr) {
+                throw FileException("Audit log is not initialized.");
+            }
+
+            auditLog->saveToFile();
+            cout << "Data saved successfully." << endl;
+            return true;
+        } catch (const FileException& e) {
+            cout << "\nFile error while saving data: " << e.what() << endl;
+        } catch (const exception& e) {
+            cout << "\nUnexpected error while saving data: " << e.what() << endl;
+        }
+
+        string retry = Utils::toLowerCase(readValidatedLine("Retry save before exit? (y/n): ", false));
+        if (retry == "y" || retry == "yes") {
+            continue;
+        }
+
+        cout << "Exit blocked until data save is confirmed." << endl;
+        return false;
     }
-    cout << "Data saved successfully." << endl;
 }
 
 void MenuSystem::loadAllData() {
     cout << "\nLoading all data..." << endl;
-    if (auditLog != nullptr) {
-        auditLog->loadFromFile();
+    try {
+        if (auditLog != nullptr) {
+            auditLog->loadFromFile();
+        }
+        cout << "Data loaded successfully." << endl;
+    } catch (const FileNotFoundException& e) {
+        cout << "\nNo saved audit log found: " << e.what() << endl;
+    } catch (const FileException& e) {
+        cout << "\nFile error while loading data: " << e.what() << endl;
+    } catch (const exception& e) {
+        cout << "\nUnexpected error while loading data: " << e.what() << endl;
     }
-    cout << "Data loaded successfully." << endl;
 }
 
 // Finder helpers

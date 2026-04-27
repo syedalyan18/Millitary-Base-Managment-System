@@ -17,8 +17,6 @@ class Officer : public Person {
 
     //override
     void display() const override ;
-    void saveToFile(const string& filename) const override;
-    void loadFromFile(const string& filename)  override ;
     string getEntityType() const override { return "Officer";}
     string getPersonType() const override { return "Officer";}
     

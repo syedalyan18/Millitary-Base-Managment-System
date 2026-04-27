@@ -44,16 +44,6 @@ void Officer::display() const {
     cout << "============================\n" << endl;
 }
 
-// Save to file
-void Officer::saveToFile(const string& filename) const {
-    cout << "Saving officer to " << filename << endl;
-}
-
-// Load from file
-void Officer::loadFromFile(const string& filename) {
-    cout << "Loading officer from " << filename << endl;
-}
-
 // Set specialization
 void Officer::setSpecialization(const string& spec) {
     specialization = spec;

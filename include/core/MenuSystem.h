@@ -88,7 +88,7 @@ class MenuSystem{
     int getReportsMenuChoice();
 
     //save/load
-    void saveAllData();
+    bool saveAllData();
     void loadAllData();
 
     //handlers

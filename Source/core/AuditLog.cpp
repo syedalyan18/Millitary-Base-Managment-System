@@ -1,5 +1,6 @@
 #include "core/AuditLog.h"
 #include "utilities/Utils.h"
+#include "utilities/CustomExceptions.h"
 #include <iostream>
 #include <fstream>
 
@@ -43,7 +44,11 @@ ostream& operator<<(ostream& out, const AuditLogEntry& entry) {
 
 // AuditLog Constructor
 AuditLog::AuditLog(const string& logPath) : logFilePath(logPath) {
-    loadFromFile();
+    try {
+        loadFromFile();
+    } catch (const FileNotFoundException&) {
+        // First run: no audit log file yet.
+    }
 }
 
 // AuditLog Destructor
@@ -128,8 +133,7 @@ void AuditLog::searchByEntityID(int entityID) const {
 void AuditLog::saveToFile() const {
     ofstream outFile(logFilePath, ios::app);
     if (!outFile.is_open()) {
-        cout << "Error opening audit log file." << endl;
-        return;
+        throw FileException("Unable to open audit log file for writing: " + logFilePath);
     }
     
     for (const auto& entry : entries) {
@@ -143,7 +147,7 @@ void AuditLog::saveToFile() const {
 void AuditLog::loadFromFile() {
     ifstream inFile(logFilePath);
     if (!inFile.is_open()) {
-        return;  // File doesn't exist yet
+        throw FileNotFoundException(logFilePath);
     }
     
     string line;
