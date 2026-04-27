@@ -6,6 +6,22 @@
 * **Abdullah Moin** (ID: 25K-0991)
 * **Syed Alyan Hussain** (ID: 25K-0648)
 ## Class Diagram: **https://tinyurl.com/bde8haxx**
+---
+
+##  Instructions to Run (VS Code)
+1.  **Prerequisite:** Ensure the `C/C++` and `C++ Runner` extensions are installed.
+2.  **Open Folder:** Open the project root directory in VS Code.
+3.  **Compilation:** Since this project uses a modular structure, compile using the following command in the terminal:
+    ```bash
+    g++ -I include Source/core/*.cpp Source/logistics/*.cpp Source/personnel/*.cpp Source/operations/*.cpp Source/utilities/*.cpp Source/main/main.cpp -o MilitarySystem
+    ```
+4.  **Execution:** Run the generated file:
+    ```bash
+    ./MilitarySystem
+    ```
+
+---
+
 ##  Project Folder Structure 
 ```text
 Project/
@@ -340,21 +356,6 @@ To run this project in Dev-C++, follow these steps to ensure the modular files a
 4.  **Configure Compiler:** Go to `Tools > Compiler Options`. Check the box "Add the following commands when calling the compiler" and enter `-std=c++11` (or higher).
 5.  **Build and Run:** Press `F11` to compile and run the system.
 
----
-
-##  Instructions to Run (VS Code)
-1.  **Prerequisite:** Ensure the `C/C++` and `C++ Runner` extensions are installed.
-2.  **Open Folder:** Open the project root directory in VS Code.
-3.  **Compilation:** Since this project uses a modular structure, compile using the following command in the terminal:
-    ```bash
-    g++ -I include Source/core/*.cpp Source/logistics/*.cpp Source/personnel/*.cpp Source/operations/*.cpp Source/utilities/*.cpp Source/main/main.cpp -o MilitarySystem
-    ```
-4.  **Execution:** Run the generated file:
-    ```bash
-    ./MilitarySystem
-    ```
-
----
 
 ## Assumptions & Limitations
 * **Date Format:** The system expects dates in the `YYYY-MM-DD` format for validation.
